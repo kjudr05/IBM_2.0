@@ -8,8 +8,9 @@ services:
       - ./data:/app/data
     environment:
       - APP_ENV=development
+      - SAMPLE_DATA_DIR=/app/sample-data
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -19,7 +20,7 @@ services:
     ports:
       - "5173:5173"
     environment:
-      - VITE_API_URL=http://localhost:8000
+      - VITE_API_URL=http://backend:8000
     depends_on:
       backend:
         condition: service_healthy

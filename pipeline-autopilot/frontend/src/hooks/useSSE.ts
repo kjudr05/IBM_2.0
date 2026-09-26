@@ -3,6 +3,8 @@
  *
  * Task 10: stub that exports the signature for TypeScript compilation.
  * Task 11: full implementation wiring SSE events into usePipelineStore actions.
+ * Task 16: REPORT_READY handler fetches the full RecoveryReport and stores it,
+ *          completing the backend → SSE → frontend flow to the final state.
  *
  * Opens GET /api/stream/{pipelineId} via the low-level openSSEStream utility.
  * Parses each typed SSE event and calls the corresponding store action.
@@ -11,12 +13,13 @@
 
 import { useEffect } from 'react';
 import { openSSEStream } from '../api/sse';
+import { getReport } from '../api/client';
 import { usePipelineStore } from '../state/pipelineStore';
 import { transitionStoryState } from '../state/storyMachine';
 import type { SSEEvent, StoryStateName } from '../types/events';
 import type { AnyEvidence } from '../types/evidence';
 import type { CausalChain } from '../types/causal';
-import type { FixProposal, ValidationResult } from '../types/fix';
+import type { FixProposal, ValidationResult, CounterfactualResult } from '../types/fix';
 
 export function useSSE(pipelineId: string | null): void {
   const setStoryState  = usePipelineStore((s) => s.setStoryState);
@@ -69,9 +72,20 @@ export function useSSE(pipelineId: string | null): void {
         }
 
         case 'REPORT_READY': {
-          // report_id is available; the full report can be fetched via
-          // GET /api/report/{report_id}.  Store sets nothing for now —
-          // App.tsx can fetch it when storyState reaches COMPLETE.
+          // Fetch the full RecoveryReport using the pipeline_id (the report
+          // endpoint is keyed by pipeline_id, not the report_id prefix).
+          // pipelineId is guaranteed non-null here because the useEffect
+          // returns early when pipelineId is null (see guard above).
+          getReport(pipelineId as string).then((report) => {
+            const store = usePipelineStore.getState();
+            store.setRecoveryReport(report);
+            // Also hydrate the counterfactual so CounterfactualSplit becomes visible
+            if (report.counterfactual) {
+              store.setCounterfactual(report.counterfactual as unknown as CounterfactualResult);
+            }
+          }).catch((err: unknown) => {
+            setError(err instanceof Error ? err.message : String(err));
+          });
           break;
         }
 

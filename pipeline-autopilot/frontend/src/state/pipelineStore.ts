@@ -25,6 +25,7 @@ import type { StoryState } from './storyMachine';
 import type { AnyEvidence } from '../types/evidence';
 import type { CausalChain } from '../types/causal';
 import type { FixProposal, ValidationResult, CounterfactualResult, RecoveryReport } from '../types/fix';
+import { INITIAL_GRAPH_NODES, INITIAL_GRAPH_EDGES } from './initialGraph';
 
 // ---------------------------------------------------------------------------
 // Store shape
@@ -92,8 +93,8 @@ export type PipelineStore = PipelineState & PipelineActions;
 const INITIAL_STATE: PipelineState = {
   storyState: 'HEALTHY',
   pipelineId: null,
-  graphNodes: [],
-  graphEdges: [],
+  graphNodes: INITIAL_GRAPH_NODES,
+  graphEdges: INITIAL_GRAPH_EDGES,
   evidenceByAgent: {},
   causalChain: null,
   proposedFix: null,
