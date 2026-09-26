@@ -1,0 +1,13 @@
+{
+  "scenarios": [
+    {
+      "id": "001",
+      "name": "The Silent Semver Break",
+      "description": "A major version dependency bump removes a function used by the payments service, causing 3 test failures and cascading degradation in 2 downstream services.",
+      "failure_stage": "test",
+      "root_cause_type": "DEPENDENCY_CHANGE",
+      "services_affected": 3,
+      "path": "scenario-001/"
+    }
+  ]
+}

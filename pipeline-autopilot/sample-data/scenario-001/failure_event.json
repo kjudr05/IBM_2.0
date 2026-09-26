@@ -1,0 +1,18 @@
+{
+  "id": "evt-scenario-001",
+  "repo": "acme/payments-service",
+  "branch": "feature/update-deps",
+  "commit_sha": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+  "pipeline_run_id": "run-20240315-001",
+  "timestamp": "2024-03-15T14:32:00Z",
+  "failure_stage": "test",
+  "raw_log_url": null,
+  "raw_log_text": "TODO: filled in ci_log.txt",
+  "git_diff_patch": "TODO: filled in git_diff.patch",
+  "test_results_xml": "TODO: filled in test_results.xml",
+  "dependency_before": {},
+  "dependency_after": {},
+  "dockerfile_content": "TODO: filled in dockerfile.txt",
+  "ci_config_content": "TODO: filled in ci_config.yml",
+  "history": []
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="payments-service" tests="17" failures="3" time="0.847">
+  <testsuite name="PaymentsService" tests="17" failures="3" time="0.847">
+    <testcase name="test_format_invoice" classname="PaymentsService" time="0.012">
+      <failure message="TypeError: formatCurrency is not a function" type="TypeError">
+TypeError: formatCurrency is not a function
+    at Object.formatCurrency (src/payments/invoice.js:12:5)
+    at Object.&lt;anonymous&gt; (src/payments/invoice.test.js:23:18)
+      </failure>
+    </testcase>
+    <testcase name="test_calculate_total" classname="PaymentsService" time="0.009">
+      <failure message="TypeError: formatCurrency is not a function" type="TypeError">
+TypeError: formatCurrency is not a function
+    at Object.formatCurrency (src/payments/totals.js:8:3)
+    at Object.&lt;anonymous&gt; (src/payments/totals.test.js:15:12)
+      </failure>
+    </testcase>
+    <testcase name="test_generate_receipt" classname="PaymentsService" time="0.011">
+      <failure message="TypeError: formatCurrency is not a function" type="TypeError">
+TypeError: formatCurrency is not a function
+    at Object.formatCurrency (src/payments/receipt.js:19:7)
+    at Object.&lt;anonymous&gt; (src/payments/receipt.test.js:31:20)
+      </failure>
+    </testcase>
+    <testcase name="test_create_payment" classname="PaymentsService" time="0.008"/>
+    <testcase name="test_validate_card" classname="PaymentsService" time="0.007"/>
+    <testcase name="test_process_refund" classname="PaymentsService" time="0.015"/>
+    <testcase name="test_apply_discount" classname="PaymentsService" time="0.006"/>
+    <testcase name="test_calculate_tax" classname="PaymentsService" time="0.005"/>
+    <testcase name="test_split_payment" classname="PaymentsService" time="0.009"/>
+    <testcase name="test_recurring_billing" classname="PaymentsService" time="0.013"/>
+    <testcase name="test_payment_status" classname="PaymentsService" time="0.004"/>
+    <testcase name="test_authorization" classname="PaymentsService" time="0.011"/>
+    <testcase name="test_webhook_notify" classname="PaymentsService" time="0.018"/>
+    <testcase name="test_idempotency_key" classname="PaymentsService" time="0.007"/>
+    <testcase name="test_currency_conversion" classname="PaymentsService" time="0.009"/>
+    <testcase name="test_fee_calculation" classname="PaymentsService" time="0.006"/>
+    <testcase name="test_audit_log" classname="PaymentsService" time="0.008"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,18 @@
+[
+  {
+    "run_id": "run-20240108-007",
+    "date": "2024-01-08T09:14:00Z",
+    "failure_stage": "test",
+    "root_cause": "utility-lib 2.2.0 introduced breaking change in parseAmount()",
+    "fix_applied": "Pinned utility-lib to 2.1.5",
+    "resolved_in": "run-20240108-009"
+  },
+  {
+    "run_id": "run-20231120-003",
+    "date": "2023-11-20T16:22:00Z",
+    "failure_stage": "build",
+    "root_cause": "Node.js version mismatch in Dockerfile (16 vs 18)",
+    "fix_applied": "Updated Dockerfile to node:18-alpine",
+    "resolved_in": "run-20231120-004"
+  }
+]

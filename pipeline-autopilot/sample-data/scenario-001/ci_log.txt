@@ -1,0 +1,33 @@
+Running CI pipeline for acme/payments-service @ a1b2c3d4
+Branch: feature/update-deps
+
+[14:32:01] Installing dependencies...
+[14:32:15] npm install completed.
+
+[14:32:15] Running tests...
+[14:32:16] FAIL src/payments/invoice.test.js
+[14:32:16]   ● PaymentsService::test_format_invoice
+
+    TypeError: formatCurrency is not a function
+
+      at Object.formatCurrency (src/payments/invoice.js:12:5)
+      at Object.<anonymous> (src/payments/invoice.test.js:23:18)
+
+[14:32:16] FAIL src/payments/totals.test.js
+[14:32:16]   ● PaymentsService::test_calculate_total
+
+    TypeError: formatCurrency is not a function
+
+      at Object.formatCurrency (src/payments/totals.js:8:3)
+      at Object.<anonymous> (src/payments/totals.test.js:15:12)
+
+[14:32:16] FAIL src/payments/receipt.test.js
+[14:32:16]   ● PaymentsService::test_generate_receipt
+
+    TypeError: formatCurrency is not a function
+
+      at Object.formatCurrency (src/payments/receipt.js:19:7)
+      at Object.<anonymous> (src/payments/receipt.test.js:31:20)
+
+[14:32:16] Tests: 3 failed, 14 passed, 17 total
+[14:32:16] BUILD FAILED

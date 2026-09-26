@@ -1,0 +1,9 @@
+{
+  "name": "acme/payments-service",
+  "version": "1.4.2",
+  "dependencies": {
+    "express": "4.18.2",
+    "utility-lib": "2.3.1",
+    "lodash": "4.17.21"
+  }
+}
